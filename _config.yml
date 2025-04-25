@@ -1,5 +1,7 @@
 title: space
 description: "Simple, Easy to Use, Clean"
 encoding: utf-8
+enable_dark_theme: true
+footer:
 
 exclude: ["README.md", "LICENSE", "*.gem", "*.gemspec", "Gemfile.lock"]
