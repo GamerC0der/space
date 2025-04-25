@@ -1,56 +1,110 @@
 <style>
     :root {
-      --primary-bg: #1e1e1e;
-      --accent-color: #0078d4;
-      --text-color: #e0e0e0;
-      --hover-bg: #2d2d2d;
+      --primary-bg: #181818;
+      --accent-color: #0a84ff;
+      --text-color: #f0f0f0;
+      --hover-bg: #252525;
+      --border-color: #2a2a2a;
+      --gradient: linear-gradient(45deg, #0a84ff, #00ddeb);
     }
     
     nav {
-      width: 200px;
+      width: 240px;
       height: 100vh;
       background: var(--primary-bg);
-      padding: 15px 0;
+      padding: 20px 0;
       position: fixed;
       top: 0;
       left: 0;
       font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+      transition: width 0.3s ease;
     }
     
     .nav-header {
-      padding: 12px 15px;
+      padding: 16px 20px;
       color: var(--text-color);
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .nav-header::before {
+      content: '';
+      width: 32px;
+      height: 32px;
+      background: var(--gradient);
+      border-radius: 8px;
+      display: inline-block;
     }
     
     .nav-item {
       color: var(--text-color);
-      padding: 10px 15px;
-      font-size: 14px;
+      padding: 12px 20px;
+      font-size: 15px;
+      font-weight: 500;
       cursor: pointer;
-      border-radius: 4px;
-      transition: background 0.2s ease;
+      border-radius: 6px;
+      margin: 0 8px;
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       text-decoration: none;
     }
     
     .nav-item:hover {
       background-color: var(--hover-bg);
+      transform: scale(1.02);
     }
     
     .nav-item.active {
-      color: var(--accent-color);
+      background: var(--gradient);
+      color: #ffffff;
+      font-weight: 600;
+    }
+    
+    .nav-toggle {
+      display: none;
+      padding: 12px 20px;
+      color: var(--text-color);
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    @media (max-width: 768px) {
+      nav {
+        width: 70px;
+      }
+      
+      nav.expanded {
+        width: 240px;
+      }
+      
+      .nav-header span,
+      .nav-item span {
+        display: none;
+      }
+      
+      nav.expanded .nav-header span,
+      nav.expanded .nav-item span {
+        display: inline;
+      }
+      
+      .nav-toggle {
+        display: block;
+      }
     }
     </style>
     
     <nav>
-      <div class="nav-header">{{ site.title }}</div>
+      <div class="nav-header"><span>{{ site.title }}</span></div>
+      <div class="nav-toggle">☰ Menu</div>
       <a href="/" class="nav-item {% if page.url == '/' %}active{% endif %}"><span>Home</span></a>
       <a href="/two" class="nav-item {% if page.url == '/two' or page.url == '/two.html' %}active{% endif %}"><span>Two</span></a>
     </nav>
