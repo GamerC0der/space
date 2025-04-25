@@ -1,0 +1,56 @@
+<style>
+    :root {
+      --primary-bg: #1e1e1e;
+      --accent-color: #0078d4;
+      --text-color: #e0e0e0;
+      --hover-bg: #2d2d2d;
+    }
+    
+    nav {
+      width: 200px;
+      height: 100vh;
+      background: var(--primary-bg);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    
+    .nav-header {
+      padding: 12px 15px;
+      color: var(--text-color);
+      font-size: 16px;
+      font-weight: 600;
+    }
+    
+    .nav-item {
+      color: var(--text-color);
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    
+    .nav-item:hover {
+      background-color: var(--hover-bg);
+    }
+    
+    .nav-item.active {
+      color: var(--accent-color);
+    }
+    </style>
+    
+    <nav>
+      <div class="nav-header">{{ site.title }}</div>
+      <a href="/" class="nav-item {% if page.url == '/' %}active{% endif %}"><span>Home</span></a>
+      <a href="/two" class="nav-item {% if page.url == '/two' or page.url == '/two.html' %}active{% endif %}"><span>Two</span></a>
+    </nav>
